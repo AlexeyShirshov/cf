@@ -65,5 +65,9 @@ namespace CoreFramework
 
             return l;
         }
+        public static string Coalesce(params string[] strings)
+        {
+            return strings?.FirstOrDefault(it => !string.IsNullOrEmpty(it));
+        }
     }
 }
