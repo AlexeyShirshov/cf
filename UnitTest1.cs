@@ -138,6 +138,16 @@ namespace CoreFrameworkTest
             Assert.AreEqual("x", s ?? "x");
             //s = string.Empty;
             //Assert.AreEqual("x", s ?? "x");
+
+            Assert.IsNull(i?[0]);
+        }
+        [TestMethod]
+        public void Coalesce()
+        {
+            string s = null;
+            Assert.IsNull(StringExtensions.Coalesce(s));
+            Assert.IsNull(StringExtensions.Coalesce());
+            Assert.AreEqual("hi", StringExtensions.Coalesce(s, "", "hi"));
         }
     }
 }
