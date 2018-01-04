@@ -155,6 +155,16 @@ namespace CoreFramework
 
             return null;
         }
+        public static string BytesToString(IEnumerable<byte> bytes)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("0x");
+            foreach (var b in bytes)
+            {
+                sb.AppendFormat("{0:X2}", b);
+            }
 
+            return sb.ToString();
+        }
     }
 }
