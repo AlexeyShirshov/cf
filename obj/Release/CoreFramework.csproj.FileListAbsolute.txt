@@ -2,3 +2,4 @@ F:\projects\cf\bin\Release\CoreFramework.dll
 F:\projects\cf\bin\Release\CoreFramework.pdb
 F:\projects\cf\obj\Release\CoreFramework.dll
 F:\projects\cf\obj\Release\CoreFramework.pdb
+F:\projects\cf\obj\Release\CoreFramework.csprojResolveAssemblyReference.cache

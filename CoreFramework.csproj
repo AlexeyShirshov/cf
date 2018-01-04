@@ -97,6 +97,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Collections\QuietDictionary.cs" />
     <Compile Include="Collections\ReadOnlyDictionary.cs" />
+    <Compile Include="Security\Object2StringCryptographer.cs" />
+    <Compile Include="Security\StreamCryptographer.cs" />
+    <Compile Include="Security\Object2StreamCryptographer.cs" />
+    <Compile Include="Security\StringCryptographer.cs" />
     <Compile Include="System\ActivatorExtensions.cs" />
     <Compile Include="System\StringExtensions.cs" />
     <Compile Include="Threading\ScopeManagers.cs" />
@@ -148,7 +152,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="None.None.None.Increment" />
+      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.Increment" BuildVersion_UpdateFileVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
