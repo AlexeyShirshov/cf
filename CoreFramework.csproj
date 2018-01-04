@@ -85,6 +85,8 @@
     <Compile Include="Config\ParamsConfiguration.cs" />
     <Compile Include="Config\СonfigurationElementExtension.cs" />
     <Compile Include="Debug\PerfCounter.cs" />
+    <Compile Include="IO\DownloadedFileAsync.cs" />
+    <Compile Include="IO\DownloadedFile.cs" />
     <Compile Include="IO\EncodingStringWriter.cs" />
     <Compile Include="Collections\EqualityComparerOnDelegates.cs" />
     <Compile Include="Globalization\Globalization.cs" />
@@ -146,7 +148,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.Increment" BuildVersion_UpdateFileVersion="True" />
+      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="None.None.None.Increment" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
