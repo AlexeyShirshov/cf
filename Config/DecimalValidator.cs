@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework.Config
+namespace CoreFramework.CFConfig
 {
     public class DecimalValidator : ConfigurationValidatorBase
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using CoreFramework.Structures;
+using CoreFramework.CFStructures;
 using System.Threading;
 
-namespace CoreFramework.Threading
+namespace CoreFramework.CFThreading
 {
     public static class SyncHelper
     {

@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework.Configuration
+namespace CoreFramework.CFConfiguration
 {
     public class CustomElementsCollection : ConfigurationElementCollection
     {

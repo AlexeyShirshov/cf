@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Mime;
 using System.Text;
 
-namespace CoreFramework
+namespace CoreFramework.CFIO
 {
     public class DownloadedFile
     {
@@ -18,17 +18,17 @@ namespace CoreFramework
             var df = new DownloadedFile();
             using (WebClient web = new WebClient())
             {
-                string hcd = web.ResponseHeaders["content-disposition"];
-                df.ContentType = web.ResponseHeaders["content-type"];
-                if (!string.IsNullOrEmpty(hcd))
-                {
-                    ContentDisposition cd = new ContentDisposition(hcd);
-                    df.Filename = cd.FileName;
-                }
-
                 var stream = web.OpenRead(url);
                 try
                 {
+                    string hcd = web.ResponseHeaders["content-disposition"];
+                    df.ContentType = web.ResponseHeaders["content-type"];
+                    if (!string.IsNullOrEmpty(hcd))
+                    {
+                        ContentDisposition cd = new ContentDisposition(hcd);
+                        df.Filename = cd.FileName;
+                    }
+
                     if (copyStream)
                     {
                         df.Stream = new MemoryStream();
@@ -50,5 +50,7 @@ namespace CoreFramework
 
             return df;
         }
+
+        
     }
 }

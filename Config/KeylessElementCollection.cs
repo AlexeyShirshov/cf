@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace CoreFramework.Configuration
+namespace CoreFramework.CFConfiguration
 {
     public interface ICustomConfigurationElement
     {

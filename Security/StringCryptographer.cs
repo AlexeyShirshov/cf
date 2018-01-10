@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CoreFramework.Security
+namespace CoreFramework.CFSecurity
 {
     public class StringCryptographer : StreamCryptographer
     {

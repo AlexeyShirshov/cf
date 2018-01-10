@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
     [DebuggerDisplay("Count = {Count}")]
     [Serializable]

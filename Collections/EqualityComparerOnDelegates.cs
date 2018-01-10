@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Linq;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
     public class EqualityFunc<T> : IEqualityComparer<T>
     {

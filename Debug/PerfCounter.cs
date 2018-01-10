@@ -5,7 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace CoreFramework.Debugging
+namespace CoreFramework.CFDebugging
 {
     /// <summary>
     /// Класс, повзволяющий точно замерять промежутки времени

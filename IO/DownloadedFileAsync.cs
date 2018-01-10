@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CoreFramework
+namespace CoreFramework.CFIO
 {
     public class DownloadedFileAsync<T>
     {
         public string Filename { get; set; }
         public string ContentType { get; set; }
         public Task<T> Task { get; set; }
-        public static DownloadedFileAsync<T> Create(Uri url, Func<DownloadedFileAsync<T>,Stream,T> convertResult, CancellationToken cancellationToken)
+        public static DownloadedFileAsync<T> Create(string url, Func<DownloadedFileAsync<T>, Stream, T> convertResult, CancellationToken cancellationToken)
+        {
+            return Create(new Uri(url), convertResult, cancellationToken);
+        }
+        public static DownloadedFileAsync<T> Create(Uri uri, Func<DownloadedFileAsync<T>,Stream,T> convertResult, CancellationToken cancellationToken)
         {
             var df = new DownloadedFileAsync<T>();
             using (WebClient web = new WebClient())
@@ -26,6 +30,18 @@ namespace CoreFramework
 
                 web.OpenReadCompleted += (sender, args) =>
                 {
+                    if (args.Error != null)
+                    {
+                        tcs.SetException(new DownloadedFileAsyncException("Error downloading content from \"{0}\"".Format2(uri), args.Error));
+                        return;
+                    }
+
+                    if (args.Cancelled)
+                    {
+                        tcs.SetCanceled();
+                        return;
+                    }
+
                     try
                     {
                         string hcd = web.ResponseHeaders["content-disposition"];
@@ -40,22 +56,35 @@ namespace CoreFramework
                     }
                     catch (Exception ex)
                     {
-                        tcs.SetException(ex);
+                        tcs.SetException(new DownloadedFileAsyncException("Error downloading content from \"{0}\"".Format2(uri), ex));
                     }
 
                 };
 
-                web.OpenReadAsync(url);
+                web.OpenReadAsync(uri);
 
                 df.Task = tcs.Task;
             }
 
             return df;
         }
-
-        public static DownloadedFileAsync<Stream> Create(Uri url, CancellationToken cancellationToken)
+        public static DownloadedFileAsync<Stream> Create(string url, CancellationToken cancellationToken)
         {
-            return DownloadedFileAsync<Stream>.Create(url, (df, stream) => stream, cancellationToken);
+            return Create(new Uri(url), cancellationToken);
+        }
+        public static Task<DownloadedFileAsync<Stream>> CreateAsync(string url, CancellationToken cancellationToken)
+        {
+            var df = Create(new Uri(url), cancellationToken);
+            return df.Task.ContinueWith(_ => df);
+        }
+        public static Task<DownloadedFileAsync<Stream>> CreateAsync(Uri uri, CancellationToken cancellationToken)
+        {
+            var df = Create(uri, cancellationToken);
+            return df.Task.ContinueWith(_ => df);
+        }
+        public static DownloadedFileAsync<Stream> Create(Uri uri, CancellationToken cancellationToken)
+        {
+            return DownloadedFileAsync<Stream>.Create(uri, (df, stream) => stream, cancellationToken);
         }
     }
 }

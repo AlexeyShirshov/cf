@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 
-namespace CoreFramework.Configuration
+namespace CoreFramework.CFConfiguration
 {
     public static class СonfigurationElementExtension
     {

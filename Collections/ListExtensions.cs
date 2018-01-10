@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
     public static class ListExtensions
     {

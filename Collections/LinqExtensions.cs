@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
     public static class LinqExtensions
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework.Mail
+namespace CoreFramework.CFMail
 {
     public static class AttachmentName
     {

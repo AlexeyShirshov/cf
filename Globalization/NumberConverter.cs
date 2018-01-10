@@ -1,10 +1,10 @@
-﻿using CoreFramework.Text;
+﻿using CoreFramework.CFText;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework.Globalization
+namespace CoreFramework.CFGlobalization
 {
     public enum TextCase { Nominative/*Кто? Что?*/, Genitive/*Кого? Чего?*/, Dative/*Кому? Чему?*/, Accusative/*Кого? Что?*/, Instrumental/*Кем? Чем?*/, Prepositional/*О ком? О чём?*/ };
 

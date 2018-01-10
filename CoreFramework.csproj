@@ -87,6 +87,7 @@
     <Compile Include="Debug\PerfCounter.cs" />
     <Compile Include="IO\DownloadedFileAsync.cs" />
     <Compile Include="IO\DownloadedFile.cs" />
+    <Compile Include="IO\DownloadedFileAsyncException.cs" />
     <Compile Include="IO\EncodingStringWriter.cs" />
     <Compile Include="Collections\EqualityComparerOnDelegates.cs" />
     <Compile Include="Globalization\Globalization.cs" />
