@@ -4,23 +4,20 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework
+namespace CoreFramework.CFIO
 {
-    namespace IO
+    public class StringWriterWithEncoding : StringWriter
     {
-        public class StringWriterWithEncoding : StringWriter
+        private readonly Encoding encoding;
+
+        public StringWriterWithEncoding(Encoding encoding)
         {
-            private readonly Encoding encoding;
+            this.encoding = encoding;
+        }
 
-            public StringWriterWithEncoding(Encoding encoding)
-            {
-                this.encoding = encoding;
-            }
-
-            public override Encoding Encoding
-            {
-                get { return encoding; }
-            }
+        public override Encoding Encoding
+        {
+            get { return encoding; }
         }
     }
 }

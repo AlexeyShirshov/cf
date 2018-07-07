@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CoreFramework.Text
+namespace CoreFramework.CFText
 {
     public class Declines
     {

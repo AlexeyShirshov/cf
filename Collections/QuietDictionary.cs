@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Collections;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
     [Serializable]
     [DebuggerDisplay("Count = {Count}")]

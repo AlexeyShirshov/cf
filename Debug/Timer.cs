@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoreFramework.Debugging
+namespace CoreFramework.CFDebugging
 {
     public class OutputTimer : IDisposable
     {

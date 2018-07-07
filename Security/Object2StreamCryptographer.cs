@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CoreFramework.Security
+namespace CoreFramework.CFSecurity
 {
     public class Object2StreamCryptographer : StreamCryptographer
     {
@@ -20,7 +20,7 @@ namespace CoreFramework.Security
             {
                 try
                 {
-                    new BinaryFormatter().Deserialize(sr.BaseStream);
+                    obj = new BinaryFormatter().Deserialize(sr.BaseStream);
                     return true;
                 }
                 catch

@@ -5,7 +5,7 @@ using System.Globalization;
 using Microsoft.Win32;
 using System.Collections.Generic;
 
-namespace CoreFramework.Globalization
+namespace CoreFramework.CFGlobalization
 {
     // Container for time zone information
     [Serializable]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
-namespace CoreFramework.Structures
+namespace CoreFramework.CFStructures
 {
     [Serializable]
     public class Pair<T>

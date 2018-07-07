@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
 	public static partial class DictionaryExtensions
     {

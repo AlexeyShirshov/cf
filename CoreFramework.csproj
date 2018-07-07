@@ -87,6 +87,7 @@
     <Compile Include="Debug\PerfCounter.cs" />
     <Compile Include="IO\DownloadedFileAsync.cs" />
     <Compile Include="IO\DownloadedFile.cs" />
+    <Compile Include="IO\DownloadedFileAsyncException.cs" />
     <Compile Include="IO\EncodingStringWriter.cs" />
     <Compile Include="Collections\EqualityComparerOnDelegates.cs" />
     <Compile Include="Globalization\Globalization.cs" />
@@ -103,12 +104,14 @@
     <Compile Include="Security\StringCryptographer.cs" />
     <Compile Include="System\ActivatorExtensions.cs" />
     <Compile Include="System\StringExtensions.cs" />
+    <Compile Include="Threading\NullAsync.cs" />
     <Compile Include="Threading\ScopeManagers.cs" />
     <Compile Include="Debug\Stack.cs" />
     <Compile Include="Threading\SyncHelper.cs" />
     <Compile Include="Text\Text.cs" />
     <Compile Include="Debug\Timer.cs" />
     <Compile Include="Globalization\TimeZoneInfo.cs" />
+    <Compile Include="Threading\TasksWaitHandle.cs" />
     <Compile Include="Xml\WriteElementValue.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,7 +155,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.Increment" BuildVersion_UpdateFileVersion="True" />
+      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="None.None.None.Increment" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

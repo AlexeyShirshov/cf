@@ -2,7 +2,7 @@ using System;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
-namespace CoreFramework.CommandLine
+namespace CoreFramework.CFCommandLine
 {
     /// <summary>
     /// Arguments class

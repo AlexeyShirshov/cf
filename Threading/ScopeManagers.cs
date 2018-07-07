@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace CoreFramework.Threading
+namespace CoreFramework.CFThreading
 {
     public class RWScopeMgr : IDisposable
     {

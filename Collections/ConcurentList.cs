@@ -1,9 +1,9 @@
-﻿using CoreFramework.Threading;
+﻿using CoreFramework.CFThreading;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
     public class ConcurrentList<T> : IList<T>
     {

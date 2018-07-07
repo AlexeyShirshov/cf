@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Collections;
 
-namespace CoreFramework.Collections
+namespace CoreFramework.CFCollections
 {
     /// <summary>
     /// Provides the base class for a generic read-only dictionary.
