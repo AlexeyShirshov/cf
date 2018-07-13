@@ -2,4 +2,5 @@ F:\projects\cf\bin\Release\CoreFramework.dll
 F:\projects\cf\bin\Release\CoreFramework.pdb
 F:\projects\cf\obj\Release\CoreFramework.dll
 F:\projects\cf\obj\Release\CoreFramework.pdb
-F:\projects\cf\obj\Release\CoreFramework.csprojResolveAssemblyReference.cache
+F:\projects\cf\obj\Release\CoreFramework.csprojAssemblyReference.cache
+F:\projects\cf\obj\Release\CoreFramework.csproj.CoreCompileInputs.cache
