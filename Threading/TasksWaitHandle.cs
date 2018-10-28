@@ -21,7 +21,7 @@ namespace CoreFramework.CFThreading
         {
             t.ContinueWith(s =>
             {
-                if (Interlocked.Decrement(ref _i) == 0)
+                if (Interlocked.Decrement(ref _i) == 0 && _wh != null && !SafeWaitHandle.IsClosed)
                 {
                     _wh.Set();
                 }

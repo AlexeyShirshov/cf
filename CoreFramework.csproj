@@ -105,6 +105,7 @@
     <Compile Include="Security\StringCryptographer.cs" />
     <Compile Include="System\ActivatorExtensions.cs" />
     <Compile Include="System\StringExtensions.cs" />
+    <Compile Include="Threading\AwaitableWaitHandle.cs" />
     <Compile Include="Threading\NullAsync.cs" />
     <Compile Include="Threading\ScopeManagers.cs" />
     <Compile Include="Debug\Stack.cs" />
@@ -156,7 +157,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.None.Increment" BuildVersion_UpdateFileVersion="True" />
+      <UserProperties BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="None.None.None.Increment" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
