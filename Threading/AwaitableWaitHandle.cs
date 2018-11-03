@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CoreFramework.CFThreadin
+namespace CoreFramework.CFThreading
 {
     public static class AwaitableWaitHandleExtensions
     {
