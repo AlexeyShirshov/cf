@@ -9,6 +9,8 @@ namespace CoreFramework
     {
         private bool disposed;
         private readonly Action executeOnDispose;
+        private readonly Action<object> executeOnDisposeC;
+        private object _ctx;
 
         /// <summary>
         /// Constructs an <see cref="AutoCleanup"/> object,
@@ -45,7 +47,15 @@ namespace CoreFramework
         {
             this.executeOnDispose = executeOnDispose;
         }
-
+        public AutoCleanup(Func<object> executeOnConstruct,
+            Action<object> executeOnDispose)
+        {            
+            if (null != executeOnConstruct)
+            {
+                _ctx = executeOnConstruct();
+            }
+            this.executeOnDisposeC = executeOnDispose;
+        }
         #region IDisposable Members
         /// <summary>
         /// Disposes the <see cref="AutoCleanup"/> object,
@@ -77,6 +87,11 @@ namespace CoreFramework
                     if (null != this.executeOnDispose)
                     {
                         this.executeOnDispose();
+                    }
+
+                    if (null != this.executeOnDisposeC)
+                    {
+                        this.executeOnDisposeC(_ctx);
                     }
                 }
                 disposed = true;
