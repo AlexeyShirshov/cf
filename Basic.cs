@@ -189,5 +189,44 @@ namespace CoreFramework
             var byteArray = Convert.FromBase64String(str + "==");
             return new Guid(byteArray);
         }
+        /// <summary>
+        /// Convert string to IEnamerable of int. For example: "1,3,4-6" returns 1,3,4,5,6
+        /// </summary>
+        /// <param name="range_string">You can use comma and dash as separators</param>
+        /// <returns></returns>
+        public static IEnumerable<int> SplitRange(this string range_string)
+        {
+            return range_string.Split(',').SelectMany(item =>
+            {
+                var b = item.Trim();
+                int i;
+                if (int.TryParse(b, out i))
+                    return new int[] { i };
+                else
+                {
+                    var ss = b.Split('-');
+                    if (ss.Length == 0)
+                        return new int[] { };
+                    else if (ss.Length == 1)
+                    {
+                        if (b.StartsWith(ss[0]))
+                        {
+                        }
+                        else
+                        {
+                        }
+                        return new int[] { };
+                    }
+                    else
+                    {
+                        int j;
+                        if (int.TryParse(ss[0], out i) && int.TryParse(ss[1], out j))
+                            return Enumerable.Range(i, j - i + 1);
+                    }
+                }
+
+                return new int[] { };
+            });
+        }
     }
 }
