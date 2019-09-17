@@ -71,5 +71,9 @@ namespace CoreFramework.CFCollections
 
             return r;
         }
+        public static string ToQueryString(this NameValueCollection nvc)
+        {
+            return String.Join("&", nvc.AllKeys.Select(a => a + "=" + Uri.EscapeDataString(nvc[a])));
+        }
     }
 }
