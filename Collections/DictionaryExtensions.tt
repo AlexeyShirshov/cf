@@ -13,10 +13,12 @@ namespace CoreFramework.CFCollections
 {
 	public static partial class DictionaryExtensions
     {
-<#foreach (var type in new string[] {"int", "bool", "double", "float", "short"})
+<#foreach (var type in new string[] {"int", "bool", "double", "float", "short", "decimal"})
       { #>
             
-		public static <#=type#> Get<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this IDictionary<String, String> dic, string name, <#=type#> def, bool throwOnParseError = false)
+		<#if (type == "bool") 
+		{#>
+public static <#=type#> Get<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this IDictionary<String, String> dic, string name, <#=type#> def, bool throwOnParseError = false)
         {
             if (dic == null)
                 throw new ArgumentNullException(nameof(dic));
@@ -46,16 +48,52 @@ namespace CoreFramework.CFCollections
 
             return null;
         }
-
-		public static <#=type#> Get<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this IDictionary<String, object> dic, string name, <#=type#> def = default(<#=type#>))
+		<#} else
+		{ #>
+public static <#=type#> Get<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this IDictionary<String, String> dic, string name, <#=type#> def, bool throwOnParseError = false, System.Globalization.CultureInfo cultureInfo = null)
         {
             if (dic == null)
                 throw new ArgumentNullException(nameof(dic));
 
-            object s;
+            string s;
+            <#=type#> i;
             if (dic.TryGetValue(name, out s))
 			{
-                return (<#=type#>)Convert.ChangeType(s, typeof(<#=type#>));
+				if (cultureInfo == null) cultureInfo = System.Globalization.CultureInfo.CurrentCulture;
+				if (throwOnParseError)
+					return <#=type#>.Parse(s);
+				else if(<#=type#>.TryParse(s, System.Globalization.NumberStyles.Any, cultureInfo, out i))
+					return i;
+			}
+
+            return def;
+        }
+
+		public static <#=type#>? Get<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this IDictionary<String, String> dic, string name, System.Globalization.CultureInfo cultureInfo = null)
+        {
+            if (dic == null)
+                throw new ArgumentNullException(nameof(dic));
+
+            string s;
+            <#=type#> i;
+			if (cultureInfo == null) cultureInfo = System.Globalization.CultureInfo.CurrentCulture;
+            if (dic.TryGetValue(name, out s) && <#=type#>.TryParse(s, System.Globalization.NumberStyles.Any, cultureInfo, out i))
+                return i;
+
+            return null;
+        }
+		<#}#>
+
+		public static <#=type#> Get<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this IDictionary<String, object> dic, string name, <#=type#> def = default(<#=type#>), System.Globalization.CultureInfo cultureInfo = null)
+        {
+            if (dic == null)
+                throw new ArgumentNullException(nameof(dic));
+
+            if (cultureInfo == null) cultureInfo = System.Globalization.CultureInfo.CurrentCulture;
+			object s;
+            if (dic.TryGetValue(name, out s))
+			{
+                return (<#=type#>)Convert.ChangeType(s, typeof(<#=type#>), cultureInfo);
 			}
 
             return def;

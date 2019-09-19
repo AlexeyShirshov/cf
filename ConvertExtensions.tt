@@ -1,0 +1,56 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Globalization" #>
+<#@ output extension="g.cs" #>
+
+using System;
+using System.Collections.Generic;
+
+namespace CoreFramework
+{
+	public static partial class ConvertExtensions
+    {
+<#foreach (var type in new string[] {"int", "bool", "double", "float", "short", "decimal"})
+      { #>
+<#if (type == "bool") 
+{#>
+		public static bool TryConvertTo<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this object value, out <#=type#> result, <#=type#> defaultValue = default(<#=type#>))
+        {
+            if (value == null)
+			{
+				result = defaultValue;
+				return false;
+			}
+			else if (value is <#=type#>) 
+			{
+				result = (<#=type#>)value;
+				return true;
+			}
+
+			return <#=type#>.TryParse(value.ToString(), out result);
+        }
+<#} else
+{#>
+		public static bool TryConvertTo<#=CultureInfo.CurrentCulture.TextInfo.ToTitleCase(type)#>(this object value, out <#=type#> result, <#=type#> defaultValue = default(<#=type#>), System.Globalization.CultureInfo cultureInfo = null)
+        {
+            if (value == null)
+			{
+				result = defaultValue;
+				return false;
+			}
+			else if (value is <#=type#>) 
+			{
+				result = (<#=type#>)value;
+				return true;
+			}
+
+			if (cultureInfo == null) cultureInfo = System.Globalization.CultureInfo.CurrentCulture;
+			return <#=type#>.TryParse(value.ToString(), System.Globalization.NumberStyles.Any, cultureInfo, out result);
+        }
+<#}#>
+<#      }#>
+	}
+}
