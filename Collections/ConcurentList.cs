@@ -20,24 +20,31 @@ namespace CoreFramework.CFCollections
 
         public IEnumerator<T> GetEnumerator()
         {
-            return Clone().GetEnumerator();
+            return Clone2SingleThreadedList().GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return Clone().GetEnumerator();
+            return Clone2SingleThreadedList().GetEnumerator();
         }
 
-        public List<T> Clone()
+        public List<T> Clone2SingleThreadedList()
         {
-            ThreadLocal<List<T>> threadClonedList = new ThreadLocal<List<T>>();
+            //ThreadLocal<List<T>> threadClonedList = new ThreadLocal<List<T>>(()=>new List<T>());
+            //
+            //using(new CSScopeMgrLite(_lock))
+            //{
+            //    internalList.ForEach(element => threadClonedList.Value.Add(element));
+            //}
+            //
+            //return threadClonedList.Value;
 
-            using(new CSScopeMgrLite(_lock))
+            var l = new List<T>();
+            using (new CSScopeMgrLite(_lock))
             {
-                internalList.ForEach(element => { threadClonedList.Value.Add(element); });
+                internalList.ForEach(element => l.Add(element));
             }
-
-            return (threadClonedList.Value);
+            return l;
         }
 
         public void Add(T item)
